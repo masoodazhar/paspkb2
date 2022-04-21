@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AssemblyController;
+use App\Http\Controllers\PartyController;
 use App\Http\Controllers\AssemblyTenureController;
 use App\Http\Controllers\ParliamentaryYearsController;
 use App\Http\Controllers\AboutController;
@@ -89,8 +90,8 @@ use App\Models\User;
 
 
 Route::group([
-    'prefix' => '{locale?}', 
-    'where' => ['locale' => '[a-zA-Z]{2}'], 
+    'prefix' => '{locale?}',
+    'where' => ['locale' => '[a-zA-Z]{2}'],
     'middleware' => 'Localization'
     ], function() {
 
@@ -105,9 +106,9 @@ Route::group([
         //     if (! in_array($locales, ['en', 'es', 'fr'])) {
         //         dd($locales);
         //     }
-        
+
         //     // App::setLocale($locales);
-            
+
         //     //
         // });
         // $locale = App::getLocale();
@@ -117,7 +118,7 @@ Route::group([
         //     dd($locale);
         // }
         Route::resource('about', AboutController::class)->middleware('auth');
-        
+
 
 
 Route::get('/home', [HomeController::class, 'mainindex'])->name('home');
@@ -140,6 +141,7 @@ Route::put('/register', function () {
 
 
 Route::resource('/assembly',AssemblyController::class)->middleware('auth');
+Route::resource('/party',PartyController::class)->middleware('auth');
 Route::resource('/assemblytenure', AssemblyTenureController::class)->middleware('auth');
 Route::resource('/parliamentaryyear',ParliamentaryYearsController::class)->middleware('auth');
 Route::resource('/messages', MessageController::class)->middleware('auth');
@@ -166,7 +168,7 @@ Route::resource('/rules', RulesController::class)->middleware('auth');
 Route::resource('/thesindhtrans2016', thesindhtrans2016Controller::class)->middleware('auth');
 Route::resource('/assemblylibrary', AssemblyLibraryController::class)->middleware('auth');
 
-// MEMBER 
+// MEMBER
 Route::resource('/speakers', SpeakersController::class)->middleware('auth');
 Route::resource('/deputyspeaker', DeputySpeakerController::class)->middleware('auth');
 Route::resource('/membersdirectory', MemebersDirectoryController::class)->middleware('auth');
@@ -193,7 +195,7 @@ Route::resource('/acts',ActsController::class)->middleware('auth');
 Route::resource('/motions', MotionsController::class)->middleware('auth');
 Route::resource('/parliamentarycalendar', ParliamentaryCalendarController::class)->middleware('auth');
 
-// COMMITTEE 
+// COMMITTEE
 Route::resource('/committeesystemdetail', CommitteeSystemDetailController::class)->middleware('auth');
 Route::resource('/committeerules', CommitteeRulesController::class)->middleware('auth');
 Route::resource('/publicaccountscommittee', PublicAccountsCommitteeController::class)->middleware('auth');
@@ -252,7 +254,7 @@ Route::get('/superadmin', [HomeController::class, 'index'])->name('superadmin');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-   
+
     Route::resource('roles', RoleController::class)->middleware('auth');
     Route::resource('users', UserController::class)->middleware('auth');
     // Route::resource('products', ProductController::class)->middleware('auth');
@@ -260,4 +262,4 @@ Route::get('/superadmin', [HomeController::class, 'index'])->name('superadmin');
 Auth::routes();
 
 });
-  
+

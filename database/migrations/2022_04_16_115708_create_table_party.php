@@ -13,19 +13,20 @@ class CreateTableParty extends Migration
      */
     public function up()
     {
-        Schema::create('table_party', function (Blueprint $table) {
+        Schema::create('parties', function (Blueprint $table) {
             $table->id();
+            $table->string('party_name');
+            $table->string('party_type');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('table_party');
+        Schema::dropIfExists('parties');
     }
 }

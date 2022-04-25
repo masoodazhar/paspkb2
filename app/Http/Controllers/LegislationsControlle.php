@@ -17,7 +17,7 @@ class LegislationsControlle extends Controller
         //  $this->middleware('permission:press-releases-delete', ['only' => ['destroy']]);
     }
 
-    public function get_reportslaid($tenureid, $locale='en')
+    public function get_legislations($tenureid, $locale='en')
     {
 
             $allRows = DB::table('legislations')
@@ -169,7 +169,7 @@ class LegislationsControlle extends Controller
      */
     public function destroy($ignore, $id)
     {
-        $singleRow = ReportsLaid::find($id);
+        $singleRow = Legislations::find($id);
         $singleRow->delete();
         return redirect()->route('legislations.index')->with(['success'=>'Data has been Deleted successfully']);
     }

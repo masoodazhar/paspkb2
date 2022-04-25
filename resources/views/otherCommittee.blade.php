@@ -11,7 +11,7 @@
 <div class="box">
 
   <div class="box-header with-border">
-    <h3 class="box-title">Other Committee Form</h3>
+    <h3 class="box-title">Other Committee Form (Pages)</h3>
 
     <div class="box-tools pull-right">
       <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for=""> Committee (Name) </label>
+                        <label for=""> Committee Page (heading) </label>
                         <input type="text" name="name" value="@if(isset($assemblyData)){{$assemblyData->name}}@endif " class="form-control">
                     </div>
                 </div>

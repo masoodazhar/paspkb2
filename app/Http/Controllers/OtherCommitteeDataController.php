@@ -18,12 +18,12 @@ class OtherCommitteeDataController extends Controller
         //  $this->middleware('permission:public-accounts-committee-delete', ['only' => ['destroy']]);
     }
 
-    public function get_othercommittees($page, $locale='en')
+    public function get_othercommittees($headerid, $locale='en')
     {
 
         $allRows = DB::table('other_committee_data')
         ->select('*')
-        ->where('page',$page)
+        ->where('page',$headerid)
         ->where('lang',$locale)
         ->get();
 

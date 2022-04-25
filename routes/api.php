@@ -27,7 +27,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\OrderOfTheDaySummaryOfProceedingsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\CallAttentionController;
-use App\Http\Controllers\ResolutionsPassedController;  
+use App\Http\Controllers\ResolutionsPassedController;
 use App\Http\Controllers\StagesOfBillsController;
 use App\Http\Controllers\BillsController;
 use App\Http\Controllers\ActsController;
@@ -56,6 +56,10 @@ use App\Http\Controllers\ElectionControllerController;
 use App\Http\Controllers\PublicAccountsCommitteeMemberController;
 use App\Http\Controllers\AdvisorController;
 use App\Http\Controllers\ContactusController;
+use App\Http\Controllers\LegislationsControlle;
+use App\Http\Controllers\OtherCommitteeController;
+use App\Http\Controllers\OtherCommitteeDataController;
+use App\Http\Controllers\OtherCommitteeMemberController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -70,6 +74,12 @@ use App\Http\Controllers\ContactusController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Other committees
+Route::get('/allcommitteesheader/{locale?}', [OtherCommitteeController::class, 'getAllCommitteesHeader']);
+
+Route::get('/othercommittee/{headerid?}/{locale?}', [OtherCommitteeDataController::class, 'get_othercommittees']);
+Route::get('/othercommitteemembers/{headerid?}/{locale?}', [OtherCommitteeMemberController::class, 'get_othercommitteemembers']);
 
 Route::get('/assemblytenure/{locale?}', [AssemblyTenureController::class, 'get_assemblytenure']);
 Route::get('/about/{locale?}', [AboutController::class, 'get_about']);
@@ -146,6 +156,7 @@ Route::get('/standingcommittees/{category?}/{locale?}', [StandingCommitteesContr
 Route::get('/standingcommitteesmembers/{category?}/{locale?}', [StandingCommitteesController::class, 'get_standingcommitteesmembers']);
 Route::get('/getndingcommitteescategory_by_id/{id?}/{locale?}', [StandingCommitteesController::class, 'get_standingcommitteescategory_by_id']);
 Route::get('/reportslaid/{tenureid?}/{locale?}', [ReportsLaidController::class, 'get_reportslaid']);
+Route::get('/legislations/{tenureid?}/{locale?}', [LegislationsControlle::class, 'get_legislations']);
 Route::get('/notifications/{pages?}/{locale?}', [NotificationsController::class, 'get_notifications']);
 Route::get('/pressreleases/{pages?}/{locale?}', [PressReleasesController::class, 'get_pressreleases']);
 

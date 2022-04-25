@@ -18,9 +18,9 @@
   <div class="box-header with-border">
     <h3 class="box-title">  Committees Form
         |
-        <a href="{{ route('othercommittee.index', app()->getLocale()) }}">Add New Committee Heading</a>
+        <a href="{{ route('othercommittee.index', app()->getLocale()) }}">Add New Committee Page</a>
         |
-        <a href="{{ route('othercommitteemember.index', app()->getLocale()) }}">Add New Committee Heading</a>
+        <a href="{{ route('othercommitteemember.index', app()->getLocale()) }}">Add Committee Members</a>
     </h3>
 
     <div class="box-tools pull-right">

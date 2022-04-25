@@ -19,6 +19,12 @@ class OtherCommitteeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getAllCommitteesHeader($locale='en'){
+        $allRows = OtherCommittee::all()->where('lang', $locale);
+        return response()->json($allRows);
+    }
+
     public function index()
     {
         $assembly = OtherCommittee::all()->where('lang', app()->getLocale());

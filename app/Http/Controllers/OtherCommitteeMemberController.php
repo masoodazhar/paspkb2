@@ -10,22 +10,22 @@ use App\Models\OtherCommittee;
 
 class OtherCommitteeMemberController extends Controller
 {
-    public function get_publicaccountscommitteemembers($page, $locale='en')
+    public function get_othercommitteemembers($headerid, $locale='en')
     {
         $result = DB::table('other_committee_member')
         ->join('members_directories', 'members_directories.id', '=', 'other_committee_member.member_chairman')
         ->select('other_committee_member.members_directories_id','members_directories.*')
-        ->where('other_committee_member.page', $page)
+        ->where('other_committee_member.page', $headerid)
         ->where('other_committee_member.lang', $locale)
         ->count();
         $allRows = array();
 
         if($result){
             $main = DB::table('other_committee_member')
-            ->join('members_directories', 'members_directories.id', '=', 'public_accounts_committee_members.member_chairman')
-            ->select('public_accounts_committee_members.members_directories_id','members_directories.*')
-            ->where('public_accounts_committee_members.page', $page)
-            ->where('public_accounts_committee_members.lang', $locale)
+            ->join('members_directories', 'members_directories.id', '=', 'other_committee_member.member_chairman')
+            ->select('other_committee_member.members_directories_id','members_directories.*')
+            ->where('other_committee_member.page', $headerid)
+            ->where('other_committee_member.lang', $locale)
             ->first();
             // print_r(json_decode($m->members_directories_id));
             $members = DB::table('members_directories')

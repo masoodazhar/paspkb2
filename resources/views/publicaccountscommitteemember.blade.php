@@ -9,7 +9,7 @@
 <!-- Default box -->
 
 <div class="box">
-     
+
     <form action="@if(isset($singleRow)){{ route('publicaccountscommitteemember.update', ['publicaccountscommitteemember'=>$singleRow->id ]) }} @else {{ route('publicaccountscommitteemember.store') }} @endif" method="post" enctype="multipart/form-data">
             @csrf
             @if(isset($singleRow))
@@ -27,8 +27,8 @@
     </div>
   </div>
   <div class="box-body">
-  <div class="row">  
-            <div class="col-md-3">                  
+  <div class="row">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Page Name</label>
                     <select name="page" id="" class="form-control">
@@ -36,14 +36,14 @@
                         <option value="2" @if(isset($singleRow)) @if($singleRow->page == '2') selected @endif  @endif> Committees on Rules of Procedure & Privileges </option>
                         <option value="3" @if(isset($singleRow)) @if($singleRow->page == '3') selected @endif  @endif> Finance Committee </option>
                         <option value="4" @if(isset($singleRow)) @if($singleRow->page == '4') selected @endif  @endif> Business Advisory committee </option>
-                        <option value="5" @if(isset($singleRow)) @if($singleRow->page == '5') selected @endif  @endif> Library Committee </option> 
-                        <option value="6" @if(isset($singleRow)) @if($singleRow->page == '6') selected @endif  @endif> House committee </option> 
+                        <option value="5" @if(isset($singleRow)) @if($singleRow->page == '5') selected @endif  @endif> Library Committee </option>
+                        <option value="6" @if(isset($singleRow)) @if($singleRow->page == '6') selected @endif  @endif> House committee </option>
                         <option value="7" @if(isset($singleRow)) @if($singleRow->page == '7') selected @endif  @endif> Construction committee </option>
                         <option value="8" @if(isset($singleRow)) @if($singleRow->page == '8') selected @endif  @endif> Special committee </option>
 
                     </select>
                 </div>
-            </div>             
+            </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Members</label>
@@ -55,10 +55,10 @@
                         @endforelse
                     </select>
                 </div>
-            </div>   
+            </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="">Chaiman</label>
+                    <label for="">Chair Person</label>
                     <select name="member_chairman" id="" class="form-control">
                         @forelse($membersDirectories as $assemblytenure)
                         <option value="{{$assemblytenure->id}}" @if(isset($singleRow)) @if($singleRow->member_chairman == $assemblytenure->id) selected @endif  @endif > {{$assemblytenure->name}} </option>
@@ -67,10 +67,10 @@
                         @endforelse
                     </select>
                 </div>
-            </div>   
-                   
+            </div>
+
         </div>
- 
+
   </div>
   <!-- /.box-body -->
   <div class="box-footer">
@@ -104,7 +104,7 @@
             <tr>
               <th width="40%">Members</th>
               <th width="15%">Page Name </th>
-              <th width="10%">Chairman </th>
+              <th width="10%">Chair Person </th>
               <th width="15%">Action</th>
             </tr>
           </thead>
@@ -119,7 +119,7 @@
                   @endforeach
               </td>
               <td>
-                @if($parliamentaryyears['data']->page == '1') 
+                @if($parliamentaryyears['data']->page == '1')
                 public account committee
                 @elseif ($parliamentaryyears['data']->page == '2')
                 Committees on Rules of Procedure & Privileges
@@ -139,10 +139,10 @@
               </td>
               <td>{{$parliamentaryyears['data']->name }}</td>
               <td>
-                <a href="{{ route('publicaccountscommitteemember.edit', ['publicaccountscommitteemember' =>$parliamentaryyears['data']->id]) }}" class="btn btn-primary">Edit</a> 
+                <a href="{{ route('publicaccountscommitteemember.edit', ['publicaccountscommitteemember' =>$parliamentaryyears['data']->id]) }}" class="btn btn-primary">Edit</a>
                 <form style="width: 47%; float: right;" action="{{ route('publicaccountscommitteemember.destroy', ['publicaccountscommitteemember'=>$parliamentaryyears['data']->id ]) }}" onSubmit="return confirm('Are Your Sure to Delete?')" class="form-inline" method="post">
                     @csrf
-                    {{ method_field('DELETE') }}                    
+                    {{ method_field('DELETE') }}
                     <input type="submit" class="btn btn-danger" value="Delete" id="">
                 </form>
               </td>

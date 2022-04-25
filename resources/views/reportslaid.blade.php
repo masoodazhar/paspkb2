@@ -13,9 +13,9 @@
 @if(isset($singleRow))
 {{ method_field('PUT') }}
 @endif
-               
+
   <div class="box-header with-border">
-    <h3 class="box-title">  Organizational Chart Form</h3>
+    <h3 class="box-title">  Report Laid(s) Form</h3>
 
     <div class="box-tools pull-right">
       <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -26,9 +26,9 @@
     </div>
   </div>
   <div class="box-body">
-   
+
         <div class="row">
-            <div class="col-md-3">                  
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Assembly Tenure</label>
                     <select name="assembly_tenures_id" id=""  class="form-control">
@@ -40,7 +40,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-3">                  
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Committee Type</label>
                     <select class="form-control" name="committee">
@@ -81,24 +81,24 @@
                             <option value="Revenue, Relief and Consolidation">Revenue, Relief and Consolidation</option>
                             <option value="Special Committee No. 7">Special Committee No. 7</option>
                             <option value="Special Committee No. 8">Special Committee No. 8</option>
-                            <option value="Special Committee No. 9">Special Committee No. 9</option>                        
+                            <option value="Special Committee No. 9">Special Committee No. 9</option>
                       </select>
                 </div>
             </div>
-            <div class="col-md-3">                  
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="">name </label>
                     <input type="text" name="name" value="@if(isset($singleRow)){{$singleRow->name}}@endif" class="form-control">
                 </div>
             </div>
-            
-            <div class="col-md-3">                  
+
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Date</label>
                     <input type="date" name="date"  value="@if(isset($singleRow)){{$singleRow->date}}@endif" class="form-control" class="form-control">
                 </div>
             </div>
-            <div class="col-md-3">                  
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Document Type</label>
                     <select name="type" id="typeofdocs" class="form-control">
@@ -109,23 +109,23 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-3">                  
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Image, PDF, Link</label>
                     <input type="file" name="image_pdf_link" class="form-control">
                 </div>
             </div>
-            
+
         </div>
         <div class="row">
-              <div class="col-md-12">                  
+              <div class="col-md-12">
                 <div class="form-group">
                     <label for="">Description</label>
                     <textarea name="image_pdf_link" class="form-control summernote" id="" cols="20" rows="10">@if(isset($singleRow)){{$singleRow->image_pdf_link}}@endif</textarea>
                 </div>
               </div>
         </div>
- 
+
   </div>
   <!-- /.box-body -->
   <div class="box-footer">
@@ -135,7 +135,7 @@
 <br>
 @foreach($errors->all() as $error)
 <div class="alert alert-danger"> {{$error}} </div>
-@endforeach  
+@endforeach
   <!-- /.box-footer-->
 </div>
 <!-- /.box -->
@@ -144,7 +144,7 @@
 <div class="box">
 
   <div class="box-header with-border">
-    <h3 class="box-title">List of Members Form</h3>
+    <h3 class="box-title">Report Laid(s)</h3>
 
     <div class="box-tools pull-right">
       <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -175,7 +175,7 @@
               <td>{{$about->type }}</td>
               <td>{{$about->committee }}</td>
               <td>
-                <a href="{{ route('reportslaid.edit', ['reportslaid' => $about->id]) }}" class="btn btn-primary">Edit</a> 
+                <a href="{{ route('reportslaid.edit', ['reportslaid' => $about->id]) }}" class="btn btn-primary">Edit</a>
                 <form style="width: 47%; float: right;" action="{{ route('reportslaid.destroy', ['reportslaid'=> $about->id ]) }}" onSubmit="return confirm('Are Your Sure to Delete?')" class="form-inline" method="post">
                         @csrf
                         {{ method_field('DELETE') }}

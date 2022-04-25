@@ -93,7 +93,7 @@
               <li class="header">You have 0 messages</li>
               <li>
                 <!-- inner menu: contains the actual data -->
-                
+
               </li>
               <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
@@ -108,7 +108,7 @@
               <li class="header">You have 0 notifications</li>
               <li>
                 <!-- inner menu: contains the actual data -->
-                
+
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
@@ -121,7 +121,7 @@
             </a>
             <ul class="dropdown-menu">
               <li class="header">You have 0 tasks</li>
-              
+
               <li class="footer">
                 <a href="#">View all tasks</a>
               </li>
@@ -144,7 +144,7 @@
                 </p>
               </li>
               <!-- Menu Body -->
-              
+
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
@@ -202,10 +202,11 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class=""><a href="{{ route('assembly.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Assembly</a></li>     
-        <li class=""><a href="{{ route('assemblytenure.index', app()->getLocale()) }}"><i class="fa fa-calendar"></i> Assembly Tenure</a></li>     
-        <li class=""><a href="{{ route('parliamentaryyear.index', app()->getLocale()) }}"><i class="fa fa-calendar"></i> Parliamentary Years</a></li>     
-        <li class=""><a href="{{ route('sociallink', app()->getLocale()) }}"><i class="fa fa-facebook"></i> Social Links</a></li>     
+        <li class=""><a href="{{ route('assembly.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Assembly</a></li>
+        <li class=""><a href="{{ route('assemblytenure.index', app()->getLocale()) }}"><i class="fa fa-calendar"></i> Assembly Tenure</a></li>
+        <li class=""><a href="{{ route('parliamentaryyear.index', app()->getLocale()) }}"><i class="fa fa-calendar"></i> Parliamentary Years</a></li>
+        <li class=""><a href="{{ route('sociallink', app()->getLocale()) }}"><i class="fa fa-facebook"></i> Social Links</a></li>
+        <li class=""><a href="{{ route('party.index', app()->getLocale()) }}"><i class="fa fa-calendar"></i> Create Party</a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>About Assembly</span>
@@ -224,7 +225,7 @@
             <li><a href="{{ url('messages') }}"><i class="fa fa-circle-o"></i> Leader of the Opposition</a></li> -->
             <li><a href="{{ route('rulesofprocedures.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Rules of Procedures</a></li>
             <li><a href="{{ route('parliamentaryprivileges.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Parliamentary Privileges</a></li>
-        
+
           </ul>
         </li>
         <li class="treeview">
@@ -242,7 +243,7 @@
             <li><a href="{{ route('contactlist.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Contact List</a></li>
             <li><a href="{{ route('rules.index') }}"><i class="fa fa-circle-o"></i> Rules</a></li>
             <li><a href="{{ route('thesindhtrans2016.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Sindh Transparency and Right</a></li>
-            <li><a href="{{ route('assemblylibrary.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Assembly Library</a></li>        
+            <li><a href="{{ route('assemblylibrary.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Assembly Library</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -253,13 +254,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('speakers.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Speaker</a></li>    
-            <li><a href="{{ route('deputyspeaker.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Deputy Speaker</a></li>    
-            <li><a href="{{ route('membersdirectory.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Members' Directory</a></li>    
-            <li><a href="{{ route('elections.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Manage By Election</a></li>    
-            <li><a href="{{ route('listofmembers.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> List of Members</a></li>    
-            <li><a href="{{ route('membersperformancereport.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Members performance report</a></li>    
-            <li><a href="{{ route('pastassemblymembers.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Past Assembly Members</a></li>    
+            <li><a href="{{ route('speakers.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Speaker</a></li>
+            <li><a href="{{ route('deputyspeaker.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Deputy Speaker</a></li>
+            <li><a href="{{ route('membersdirectory.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Members' Directory</a></li>
+            <li><a href="{{ route('elections.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Manage By Election</a></li>
+            <li><a href="{{ route('listofmembers.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> List of Members</a></li>
+            <li><a href="{{ route('membersperformancereport.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Members performance report</a></li>
+            <li><a href="{{ route('pastassemblymembers.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Past Assembly Members</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -270,21 +271,22 @@
             </span>
           </a>
           <ul class="treeview-menu">
-              
-            <li><a href="{{ route('currentassemblysummary.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Current Assembly Summary</a></li>        
-            <li><a href="{{ route('mainsessions.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Sessions</a></li>        
-            <li><a href="{{ route('otdsummaryofproceedings.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Order of the day (Agenda)</a></li>        
-            <li><a href="{{ route('otdsummaryofproceedings.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Summary of proceedings</a></li>        
-            <li><a href="{{ route('otdsummaryofproceedings.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> House Debates</a></li>        
-            <li><a href="{{ route('questions.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Questions</a></li>        
-            <li><a href="{{ route('resolutionspassed.index') }}"><i class="fa fa-circle-o"></i> Resolutions Passed</a></li>        
-            <li><a href="{{ route('callattention.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Call Attention</a></li>        
-            <li><a href="{{ route('stagesofbills.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Stages of Bills</a></li>        
-            <li><a href="{{ route('bills.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Bills</a></li>        
-            <li><a href="{{ route('acts.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Acts</a></li>        
-            <li><a href="{{ route('motions.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Motions</a></li>        
+
+            <li><a href="{{ route('currentassemblysummary.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Current Assembly Summary</a></li>
+            <li><a href="{{ route('mainsessions.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Sessions</a></li>
+            <li><a href="{{ route('otdsummaryofproceedings.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Order of the day (Agenda)</a></li>
+            <li><a href="{{ route('otdsummaryofproceedings.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Summary of proceedings</a></li>
+            <li><a href="{{ route('otdsummaryofproceedings.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> House Debates</a></li>
+            <li><a href="{{ route('questions.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Questions</a></li>
+            <li><a href="{{ route('resolutionspassed.index') }}"><i class="fa fa-circle-o"></i> Resolutions Passed</a></li>
+            <li><a href="{{ route('callattention.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Call Attention</a></li>
+            <li><a href="{{ route('stagesofbills.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Stages of Bills</a></li>
+            <li><a href="{{ route('bills.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Bills</a></li>
+            <li><a href="{{ route('acts.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Acts</a></li>
+            <li><a href="{{ route('motions.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Motions</a></li>
             <!-- <li><a href="{{ url('assemblylibrary') }}"><i class="fa fa-circle-o"></i> Performance of Assembly</a></li>         -->
-            <li><a href="{{ route('parliamentarycalendar.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Parliamentary Calendar</a></li>    
+            <li><a href="{{ route('parliamentarycalendar.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Parliamentary Calendar</a></li>
+            <li><a href="{{ route('legislations.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Legislations </a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -295,22 +297,23 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('committeesystemdetail.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committee System </a></li>    
-            <li><a href="{{ route('committeerules.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committee Rules </a></li>    
-            <li><a href="{{ route('publicaccountscommitteemember.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> All Committees Members </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> All Committees </a></li>    
-            <li><a href="{{ route('standingcommittees.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Standing Committees </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committees on Rules </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Finance Committee </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Select committee on bills </a></li>    
-            <li><a href="{{ route('committeeongovernmentassurance.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committee on Govt & Assurance </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Library committee </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Business Advisory committee </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Special Committee </a></li>    
-            <li><a href="{{ route('reportslaid.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Reports (Laid) </a></li>    
-            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> House Committee </a></li>    
-            <!-- <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Construction Committee </a></li>  -->
-
+            <li><a href="{{ route('committeesystemdetail.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committee System </a></li>
+            <li><a href="{{ route('committeerules.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committee Rules </a></li>
+            <li><a href="{{ route('publicaccountscommitteemember.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> All Committees Members </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> All Committees </a></li>
+            <li><a href="{{ route('standingcommittees.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Standing Committees </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committees on Rules </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Finance Committee </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Select committee on bills </a></li>
+            <li><a href="{{ route('committeeongovernmentassurance.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committee on Govt & Assurance </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Library committee </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Business Advisory committee </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Special Committee </a></li>
+            <li><a href="{{ route('reportslaid.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Reports (Laid) </a></li>
+            <li><a href="{{ route('publicaccountscommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> House Committee </a></li>
+            <!-- <li><a href="{{ route('othercommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Construction Committee </a></li>  -->
+            {{-- <li><a href="{{ route('othercommittee.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Other Committee </a></li> --}}
+            <li><a href="{{ route('othercommitteedata.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Other Committees </a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -321,7 +324,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            
+
               <!-- START -->
               <li class="treeview">
                 <a href="#">
@@ -331,25 +334,25 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Sessions</a></li>      
-                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Members</a></li>      
-                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committees</a></li>      
-                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> General</a></li>      
+                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Sessions</a></li>
+                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Members</a></li>
+                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Committees</a></li>
+                  <li><a href="{{ route('notifications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> General</a></li>
                 </ul>
               </li>
               <!-- END -->
-            
-            <li><a href="{{ route('pressreleases.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Press Releases </a></li>  
-            <li><a href="{{ route('pressreleases.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> News and activities </a></li>  
-            <li><a href="{{ route('picturegallery.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Picture Gallery </a></li>  
-            <li><a href="{{ route('tenders.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Tenders </a></li>  
-            <li><a href="{{ route('tenders.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Jobs </a></li>  
-            <li><a href="{{ route('glossary.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Glossary </a></li>  
+
+            <li><a href="{{ route('pressreleases.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Press Releases </a></li>
+            <li><a href="{{ route('pressreleases.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> News and activities </a></li>
+            <li><a href="{{ route('picturegallery.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Picture Gallery </a></li>
+            <li><a href="{{ route('tenders.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Tenders </a></li>
+            <li><a href="{{ route('tenders.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Jobs </a></li>
+            <li><a href="{{ route('glossary.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Glossary </a></li>
             <!-- <li><a href="{{ url('notifications') }}"><i class="fa fa-circle-o"></i> Useful Links </a></li>   -->
-            <li><a href="{{ route('faqs.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> FAQs </a></li>  
-            <li><a href="{{ route('webcastlivevideoaudio.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Webcast </a></li>  
-            <li><a href="{{ route('videoarchive.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Video Archive </a></li>  
-              
+            <li><a href="{{ route('faqs.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> FAQs </a></li>
+            <li><a href="{{ route('webcastlivevideoaudio.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Webcast </a></li>
+            <li><a href="{{ route('videoarchive.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Video Archive </a></li>
+
           </ul>
         </li>
         <li class="treeview">
@@ -360,8 +363,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('publications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Publications </a></li>  
-            <li><a href="{{ route('publications.index', app()->getLocale())  }}"><i class="fa fa-circle-o"></i> Reports </a></li>  
+            <li><a href="{{ route('publications.index', app()->getLocale()) }}"><i class="fa fa-circle-o"></i> Publications </a></li>
+            <li><a href="{{ route('publications.index', app()->getLocale())  }}"><i class="fa fa-circle-o"></i> Reports </a></li>
 
           </ul>
         </li>
@@ -373,11 +376,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('contactus', app()->getLocale())  }}"><i class="fa fa-circle-o"></i> Contact Us </a></li>  
+            <li><a href="{{ route('contactus', app()->getLocale())  }}"><i class="fa fa-circle-o"></i> Contact Us </a></li>
 
           </ul>
         </li>
-        
+
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -653,7 +656,7 @@ $(document).ready(function() {
     $('select').select2();
 });
   $(document).ready(function() {
-    
+
   $('.summernote').summernote();
 
   $('table').DataTable( {
@@ -667,7 +670,7 @@ $(document).ready(function() {
 <script>
   $(document).ready(function() {
     var type = '@if(isset($singleRow)){{$singleRow->type}}@endif';
-    
+
     if(type!='text'){
         $('[name="image_pdf_link"]').eq(1).parent('div').hide();
         $('[name="description"]').eq(1).parent('div').hide();
@@ -690,9 +693,9 @@ $(document).ready(function() {
         $('[name="description"]').eq(0).parent('div').hide()
       }
     });
-    
+
   });
-  
+
 </script>
 <script>
     $(document).ready(function(){
@@ -717,7 +720,7 @@ $(document).ready(function() {
                row +='<td> <input type="text" name="motionstext[]" class="form-control" value="-"> </td>';
                row +='<td> <input type="text" name="motionsvalue[]" class="form-control" value="-"> </td>';
                row +='</tr>';
-               
+
               $('.memberperformbody').append(row);
         });
 
@@ -725,7 +728,7 @@ $(document).ready(function() {
             e.preventDefault();
               var row = '<div class="row"><div class="col-md-2"> <div class="form-group"><label for="">Qualification </label><select name="qualification[]" class="form-control">    <option value="-">Select Qualification</option><option value="Ph.D">Ph.D</option><option value="MPhil">MPhil</option><option value="LL.M">LL.M.</option><option value="M Pharmacy">M Pharmacy</option><option value="M.Sc.(Hons)">M.Sc.(Hons)</option><option value="M.Com">M.Com</option><option value="M.Sc">M.Sc.</option><option value="MBA">MBA</option><option value="Master in Surgery">Master in Surgery</option><option value="MA">MA</option><option value="MPA">MPA</option><option value="MCIT">MCIT</option><option value="MD">MD</option><option value="ME">ME</option><option value="Shahdat-ul-Almia">Shahdat-ul-Almia</option><option value="MRCP">MRCP</option><option value="MCPS">MCPS</option><option value="FCPS">FCPS</option><option value="FRCP">FRCP</option><option value="FRCS">FRCS</option><option value="MACP">MACP</option><option value="PGD">PGD</option><option value="L.L.B (Hons)">L.L.B (Hons)</option><option value="Diploma in Computer Science">Diploma in Computer Science</option><option value="Advance Diploma in Business Administration">Advance Diploma in Business Administration</option><option value="Diploma in Cardiology">Diploma in Cardiology</option><option value="Diploma in Gyanee">Diploma in Gyanee</option><option value="Certification in Global Financial Markets">Certification in Global Financial Markets</option><option value="Diploma in Labour Laws">Diploma in Labour Laws</option><option value="Diploma in Taxation Laws">Diploma in Taxation Laws</option><option value="B.Com">B.Com</option><option value="L.L.B">L.L.B</option><option value="B.Ed">B.Ed.</option><option value="B.Sc.(Hons)">B.Sc.(Hons)</option><option value="MBBS">MBBS</option><option value="BA">BA</option><option value="BCS">BCS</option><option value="BCIT">BCIT</option><option value="BE">BE</option><option value="B.Sc. (Engr.)">B.Sc. (Engr.)</option><option value="B.B.A">B.B.A</option><option value="B.Sc">B.Sc.</option><option value="BA B.Ed">BA B.Ed.</option><option value="Graduation">Graduation</option><option value="B.B.A. (Hons)">B.B.A. (Hons)</option><option value="B Pharmacy">B Pharmacy</option><option value="Bachelor of Architect">Bachelor of Architect</option><option value="BA (Hons.)">BA (Hons.)</option><option value="Diploma in Business Administration">Diploma in Business Administration</option><option value="Diploma in Interior Design">Diploma in Interior Design</option><option value="Diploma in Physical Education">Diploma in Physical Education</option><option value="D.Com">D.Com.</option><option value="Diploma of Associate Engineering">Diploma of Associate Engineering</option><option value="Senior Cambridge">Senior Cambridge</option><option value="F.Sc">F.Sc.</option><option value="A-Level">A-Level</option><option value="F.A">F.A</option><option value="ICS">ICS</option><option value="Certificate">Certificate</option><option value="O-Level">O-Level</option><option value="Matriculation">Matriculation</option><option value="Tanzeem-ul-Madaras">Tanzeem-ul-Madaras</option><option value="Under Matric">Under Matric</option><option value="Middle">Middle</option><option value="Master of Arts (International Relations)">Master of Arts (International Relations)</option><option value="Barrister of Law">Barrister of Law</option><option value="Army Special Certification of Education">Army Special Certification of Education</option><option value="M.S. (Orthopaedics)">M.S. (Orthopaedics)</option><option value="M.Ed">M.Ed.</option>';
                   row +='</select>';
-                        
+
                   row +='</div></div><div class="col-md-3"><div class="form-group"><label for="">Year of Passing </label>';
                   row +=' <input type="text"  name="yearofpassing[]" value="@if(isset($singleRow)){{$singleRow->yearofpassing}}@else - @endif" class="form-control">';
                   row +='</div></div><div class="col-md-3"><div class="form-group"><label for="">Institute/University</label><input type="text" name="iu[]" value="@if(isset($singleRow)){{$singleRow->iu}}@else - @endif" class="form-control"></div>';
@@ -735,14 +738,14 @@ $(document).ready(function() {
               $('.addqualificationbody').append(row);
         })
         $('.addqualificationbody').delegate('.remqualification','click',function(e){
-          e.preventDefault(); 
+          e.preventDefault();
           $(this).parent().parent('.row').remove();
         })
 
         // PREVOIUS
         $('.addprevious').click(function(e){
             e.preventDefault();
-              
+
               var row ='<div class="row"><div class="col-md-3"><div class="form-group"><label for="">Previous official positions</label><select name="previousposition[]" class="form-control"><option value="-">Select One..</option><option value="Baitul Maal Committee">Baitul Maal Committee</option><option value="Cattle Market Management Company">Cattle Market Management Company</option><option value="Chief Minister Complaint Cell">Chief Minister Complaint Cell</option><option value="Chief Minister, Punjab">Chief Minister, Punjab</option><option value="Corporation, Gujranwala">Corporation, Gujranwala</option><option value="Crime Control Committe">Crime Control Committe</option><option value="District Council">District Council</option><option value="District Education Advisory Committee">District Education Advisory Committee</option><option value="District Khidmat Committee">District Khidmat Committee</option><option value="District Nazim, Shakargarh">District Nazim, Shakargarh</option><option value="District Public Safety Police Complaint Commission">District Public Safety Police Complaint Commission</option><option value="Divisional Darbar">Divisional Darbar</option><option value="Education Department">Education Department</option><option value="Federal Government">Federal Government</option><option value="Governer of the Punjab">Governer of the Punjab</option><option value="Govt. of Sindh">Govt. of Sindh</option><option value="Govt. of the Punjab">Govt. of the Punjab</option><option value="Health Department">Health Department</option><option value="High Court">High Court</option><option value="Home Department">Home Department</option><option value="Law Department">Law Department</option><option value="Local Government">Local Government</option><option value="Majlis-e-Shoora">Majlis-e-Shoora</option><option value="Market Committee">Market Committee</option><option value="Markiz Council">Markiz Council</option><option value="Metropolitian Corporation, Lahore">Metropolitian Corporation, Lahore</option><option value="Multan Cess Committee">Multan Cess Committee</option><option value="Multan Development Authority">Multan Development Authority</option><option value="Multan Waste Management Company">Multan Waste Management Company</option><option value="Municipal Committee">Municipal Committee</option><option value="Municipal Corporation">Municipal Corporation</option><option value="National Assembly of Pakistan">National Assembly of Pakistan</option><option value="Pakistan Air Force">Pakistan Air Force</option><option value="Pakistan Army">Pakistan Army</option><option value="Pakistan Cricket Board">Pakistan Cricket Board</option><option value="Pakistan International Airline">Pakistan International Airline</option><option value="Police Department">Police Department</option><option value="Provincial Assembly of Sindh">Provincial Assembly of Sindh</option><option value="Provincial Assembly of the Punjab">Provincial Assembly of the Punjab</option><option value="Provincial Council of the Punjab">Provincial Council of the Punjab</option><option value="Punjab Heritage Fund">Punjab Heritage Fund </option><option value="Punjab Legislative Council">Punjab Legislative Council</option><option value="Punjab Norcotics Committee">Punjab Norcotics Committee</option><option value="Punjab Privatization Commission">Punjab Privatization Commission</option><option value="Punjab Procurement Regulatory Authority">Punjab Procurement Regulatory Authority</option><option value="Quaid-e-Azam Solar Park Company">Quaid-e-Azam Solar Park Company</option><option value="Senate of Pakistan">Senate of Pakistan</option><option value="Social Action Board">Social Action Board</option><option value="State Bank of Pakistan">State Bank of Pakistan</option><option value="Tehsil Council">Tehsil Council</option><option value="Tehsil Nazim, Shakargarh">Tehsil Nazim, Shakargarh</option><option value="Town Committee">Town Committee</option><option value="Water and Sanitation Agency">Water and Sanitation Agency</option><option value="West Pakistan Assembly">West Pakistan Assembly</option><option value="Women Crises Center, Vehari">Women Crises Center, Vehari</option></select>';
               row +='</div></div><div class="col-md-3"><div class="form-group">Govt. Body</div><input type="text" class="form-control" value="-" name="govtbody[]"></div>';
               row +='<div class="col-md-1"><a href="#" class="btn btn-danger remprevious" style="margin-top: 23px;">-</a></div>';
@@ -752,7 +755,7 @@ $(document).ready(function() {
               $('.addpreviousbody').append(row);
         })
         $('.addpreviousbody').delegate('.remprevious','click',function(e){
-          e.preventDefault(); 
+          e.preventDefault();
           $(this).parent().parent('.row').remove();
         });
 
@@ -768,7 +771,7 @@ $(document).ready(function() {
               $('.addpoliticalbody').append(row);
         })
         $('.addpoliticalbody').delegate('.rempolitical','click',function(e){
-          e.preventDefault(); 
+          e.preventDefault();
           $(this).parent().parent('.row').remove();
         });
 
@@ -784,7 +787,7 @@ $(document).ready(function() {
               $('.addvisitsbody').append(row);
         })
         $('.addvisitsbody').delegate('.remvisits','click',function(e){
-          e.preventDefault(); 
+          e.preventDefault();
           $(this).parent().parent('.row').remove();
         });
 
@@ -800,7 +803,7 @@ $(document).ready(function() {
               $('.addeventbody').append(row);
         })
         $('.addeventbody').delegate('.remevent','click',function(e){
-          e.preventDefault(); 
+          e.preventDefault();
           $(this).parent().parent('.row').remove();
         });
 
@@ -818,7 +821,7 @@ $(document).ready(function() {
               $('.addmocbody').append(row);
         })
         $('.addmocbody').delegate('.remmoc','click',function(e){
-          e.preventDefault(); 
+          e.preventDefault();
           $(this).parent().parent().prev('.row').remove();
           $(this).parent().parent('.row').remove();
         });
@@ -835,13 +838,13 @@ $(document).ready(function() {
               $('.addrelativebody').append(row);
         })
         $('.addrelativebody').delegate('.remrelative','click',function(e){
-          e.preventDefault(); 
+          e.preventDefault();
           $(this).parent().parent('.row').remove();
         })
 
         $('.pagetype').change(function(){
           var page = $(this).children('option:selected').val();
-         
+
           if(page == 'News and Activities'){
             $('.frontimage').show();
           }else{

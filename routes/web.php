@@ -65,6 +65,10 @@ use App\Http\Controllers\PublicAccountsCommitteeMemberController;
 use App\Http\Controllers\AdvisorController;
 use App\Http\Controllers\ContactusController;
 use App\Models\User;
+use App\Http\Controllers\OtherCommitteeController;
+use App\Http\Controllers\OtherCommitteeDataController;
+use App\Http\Controllers\OtherCommitteeMemberController;
+use App\Http\Controllers\LegislationsControlle;
 
 
 /*                       MembersDirectoryController
@@ -203,6 +207,14 @@ Route::resource('/publicaccountscommitteemember', PublicAccountsCommitteeMemberC
 Route::resource('/standingcommittees', StandingCommitteesController::class)->middleware('auth');
 Route::resource('/standingcommitteescategory', StandingCommitteesCategoryController::class)->middleware('auth');
 Route::resource('/reportslaid', ReportsLaidController::class)->middleware('auth');
+
+// OTHER
+Route::resource('/othercommittee',OtherCommitteeController::class)->middleware('auth');
+Route::resource('/othercommitteedata',OtherCommitteeDataController::class)->middleware('auth');
+Route::resource('/othercommitteemember',OtherCommitteeMemberController::class)->middleware('auth');
+
+// Legislations
+Route::resource('/legislations',LegislationsControlle::class)->middleware('auth');
 
 Route::get('/committeesonrulesofprocedureprivileges', function () {
     return view('committeesonrulesofprocedureprivileges');

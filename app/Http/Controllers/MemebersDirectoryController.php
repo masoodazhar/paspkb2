@@ -8,11 +8,11 @@ use DB;
 use App\Models\MembersDirectory;
 use App\Models\AssemblyTenure;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Party;
 
 class MemebersDirectoryController extends Controller
 {
-    
+
     function __construct()
     {
          $this->middleware('permission:members-performance-report-list|members-performance-report-create|members-performance-report-edit|members-performance-report-delete', ['only' => ['index','store']]);
@@ -46,10 +46,10 @@ class MemebersDirectoryController extends Controller
             }
           }
 
-         
 
-        $query = MembersDirectory::query();       
-    
+
+        $query = MembersDirectory::query();
+
         foreach($columns as $index => $column){
             $query->Where($column, 'LIKE', '%' . $values[$index] . '%');
         }
@@ -90,7 +90,7 @@ class MemebersDirectoryController extends Controller
         $phonenumber = $request->phonenumber;
         $email = $request->email;
 
-        
+
         $allRows = [];
 
         if($name != '' && $qualification != '' && $age !='' && $religion != '' && $previousposition !='' && $seattype !='' && $maritalstatus !='' && $constituency != '' && $presentaddress !=''){
@@ -230,7 +230,7 @@ class MemebersDirectoryController extends Controller
         else if( $seattype !='' && $maritalstatus !='' && $constituency != '' && $presentaddress !=''){
             $allRows = DB::table('members_directories')
             ->where([
-                   
+
                     ['seattype', 'like', '%'.$seattype.'%'],
                     ['maritalstatus', 'like', '%'.$maritalstatus.'%'],
                     ['constituency', 'like', '%'.$constituency.'%'],
@@ -244,7 +244,7 @@ class MemebersDirectoryController extends Controller
         else if( $seattype !='' && $maritalstatus !='' && $constituency != '' && $presentaddress !=''){
             $allRows = DB::table('members_directories')
             ->where([
-                   
+
                     ['seattype', 'like', '%'.$seattype.'%'],
                     ['maritalstatus', 'like', '%'.$maritalstatus.'%'],
                     ['constituency', 'like', '%'.$constituency.'%'],
@@ -494,7 +494,7 @@ class MemebersDirectoryController extends Controller
         $allRows = DB::table('assemblies')->where('lang', $locale)->get();
         return response()->json($allRows);
     }
-    
+
     public function get_memebersdirectory($tenure=false, $locale='en')
     {
         $allRows = DB::table('members_directories')
@@ -580,7 +580,7 @@ class MemebersDirectoryController extends Controller
         // print_r(array_unique($qualifications) );
         // $uniquePids = array_unique(array_map(function ($i) { return $i['qualification']; }, $allRows));
         // $array = array_column($array, 'plan');
-        
+
         // print_r($qualifications);
         // dd($allRows);
         return response()->json($allRows);
@@ -637,9 +637,14 @@ class MemebersDirectoryController extends Controller
      */
     public function index()
     {
-        $allRows = MembersDirectory::all()->where('lang', app()->getLocale());
+        $allRows =  DB::table('members_directories')
+        ->leftJoin('parties', 'parties.id', '=', 'members_directories.partyassociation')
+        ->where('members_directories.lang', app()->getLocale())
+        ->select('members_directories.*', 'parties.party_name', 'parties.party_type')
+        ->get();
         $assemblyTenure = AssemblyTenure::orderBy('id', 'desc')->where('lang', app()->getLocale())->get();
-        return view('membersdirectory', compact('allRows','assemblyTenure'));
+        $partyList = Party::all()->where('lang', app()->getLocale());
+        return view('membersdirectory', compact('allRows','assemblyTenure', 'partyList'));
     }
 
     /**
@@ -687,9 +692,9 @@ class MemebersDirectoryController extends Controller
              'previousposition' => 'required',
              'wooment' => 'required',
             ]);
-        
+
         // dd($request->all());
-        
+
         $table = new MembersDirectory;
 
         $table->assembly_tenures_id = $request->assembly_tenures_id;
@@ -745,14 +750,14 @@ class MemebersDirectoryController extends Controller
         $table->mian_aothdate=$request->mian_aothdate;
         $table->memberfromdate=$request->memberfromdate;
         $table->membertodate=$request->membertodate;
-        
+
         $table->lang = app()->getLocale();
 
        if($request->hasFile('image')){
-            $imageName = time().'.'.$request->image->extension();       
+            $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('uploads'), $imageName);
             $table->image =  $imageName;
-       } 
+       }
 
         $table->save();
         return redirect()->route('membersdirectory.index')->with(['success'=>'Data has been Saved successfully']);
@@ -777,10 +782,16 @@ class MemebersDirectoryController extends Controller
      */
     public function edit($ignore, $id)
     {
-        $singleRow = MembersDirectory::find($id); 
-        $allRows = MembersDirectory::all()->where('lang', app()->getLocale());
+        $singleRow = MembersDirectory::find($id);
+        $allRows =  DB::table('members_directories')
+        ->leftJoin('parties', 'parties.id', '=', 'members_directories.partyassociation')
+        ->where('members_directories.lang', app()->getLocale())
+        ->select('members_directories.*', 'parties.party_name', 'parties.party_type')
+        ->get();
+
         $assemblyTenure = AssemblyTenure::orderBy('id', 'desc')->where('lang', app()->getLocale())->get();
-        return view('membersdirectory', compact('allRows','singleRow','assemblyTenure'));
+        $partyList = Party::all()->where('lang', app()->getLocale());
+        return view('membersdirectory', compact('allRows','singleRow','assemblyTenure', 'partyList'));
     }
 
     /**
@@ -792,7 +803,7 @@ class MemebersDirectoryController extends Controller
      */
     public function update($ignore,Request $request, $id)
     {
-        
+
         $request->validate([
             'assembly_tenures_id' => 'required',
             //  'image' => 'required',
@@ -822,11 +833,11 @@ class MemebersDirectoryController extends Controller
         $table = MembersDirectory::find($id);
 
         if($request->hasFile('image')){
-            $imageName = time().'.'.$request->image->extension();       
+            $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('uploads'), $imageName);
-            $table->image =  $imageName;           
+            $table->image =  $imageName;
         }else{
-            $table->image = $table->image;            
+            $table->image = $table->image;
         }
 
         $table->assembly_tenures_id = $request->assembly_tenures_id;
@@ -883,7 +894,7 @@ class MemebersDirectoryController extends Controller
         $table->membertodate=$request->membertodate;
         $table->save();
         return redirect()->route('membersdirectory.index')->with(['success'=>'Data has been Updated successfully']);
-        
+
     }
 
     /**

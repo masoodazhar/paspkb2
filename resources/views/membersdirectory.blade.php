@@ -32,9 +32,9 @@
                 @if(isset($singleRow))
                 {{ method_field('PUT') }}
                 @endif
-                
+
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Assembly Tenure</label>
                         <select name="assembly_tenures_id" class="form-control">
@@ -43,23 +43,23 @@
                             @empty
                                 <option value="0">No Assembly</option>
                             @endforelse
-                        
+
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Name </label>
                         <input type="text" name="name" value="@if(isset($singleRow)){{$singleRow->name}}@endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">image </label>
                         <input type="file" name="image" value="@if(isset($singleRow)){{$singleRow->image}}@endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Father/Husband name </label>
                         <input type="text" name="fatherhusbandname" value="@if(isset($singleRow)){{$singleRow->fatherhusbandname}}@else - @endif" class="form-control">
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Reserve seat for women</label>
                         <select name="wooment" id="" class="form-control">
@@ -76,25 +76,25 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Birth Day</label>
                         <input type="date" name="birthday" value="@if(isset($singleRow)){{$singleRow->birthday}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Age</label>
                         <input type="number" name="age" value="@if(isset($singleRow)){{$singleRow->age}}@else 0 @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Place of Birth </label>
                         <input type="text" name="placeofbirth" value="@if(isset($singleRow)){{$singleRow->placeofbirth}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Marital Status </label>
                         <select name="maritalstatus" class="form-control">
@@ -105,18 +105,18 @@
                             <option value="Widow" @if(isset($singleRow)) @if($singleRow->maritalstatus == 'Widow') selected @endif @endif>Widow</option>
                             <option value="Single" @if(isset($singleRow)) @if($singleRow->maritalstatus == 'Single') selected @endif @endif>Single</option>
                         </select>
-                        
+
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Children</label>
                         <input type="text" name="children" value="@if(isset($singleRow)){{$singleRow->children}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
-                    
+
                         <label for="">Religion</label>
                         <select name="religion" class="form-control">
                             <option value="Islam" @if(isset($singleRow)) @if($singleRow->religion == 'Islam') selected @endif @endif>Islam</option>
@@ -131,8 +131,8 @@
             </div>
             <p> Political Info </p>
             <hr>
-            <div class="row">               
-                <div class="col-md-3">                  
+            <div class="row">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Seat Type </label>
                         <select name="seattype" class="form-control select2" tabindex="-1" aria-hidden="true">
@@ -142,44 +142,53 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Seats </label>
                         <input type="number" name="seats" value="@if(isset($singleRow)){{$singleRow->seats}}@else 0 @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">District </label>
                         <input type="text" name="District" value="@if(isset($singleRow)){{$singleRow->District}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Constituency </label>
                         <input type="text" name="constituency" value="@if(isset($singleRow)){{$singleRow->constituency}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Party Association </label>
-                        <input type="text" name="partyassociation" value="@if(isset($singleRow)){{$singleRow->partyassociation}}@else - @endif" class="form-control">
+
+
+                        <select name="partyassociation" class="form-control">
+                           @forelse($partyList as $assemblyTenure)
+                                <option value="{{$assemblyTenure->id}}" @if(isset($singleRow)) @if($singleRow->partyassociation == $assemblyTenure->id) selected @endif  @endif >{{$assemblyTenure->party_name}} in {{$assemblyTenure->party_type}}</option>
+                            @empty
+                                <option value="0">No Party Created</option>
+                            @endforelse
+
+                        </select>
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Oath Taken on </label>
                         <input type="text" name="mian_aothdate" value="@if(isset($singleRow)){{$singleRow->mian_aothdate}}@else - @endif" class="form-control">
                     </div>
                 </div>
 
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">From Date</label>
                         <input type="text" name="memberfromdate" value="@if(isset($singleRow)){{$singleRow->memberfromdate}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">To Date </label>
                         <input type="text" name="membertodate" value="@if(isset($singleRow)){{$singleRow->membertodate}}@else - @endif" class="form-control">
@@ -190,31 +199,31 @@
             <p>Contact Info</p>
             <hr>
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Phone Number</label>
                         <input type="text" name="phonenumber" value="@if(isset($singleRow)){{$singleRow->phonenumber}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Email </label>
                         <input type="text" name="email" value="@if(isset($singleRow)){{$singleRow->email}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Web Address </label>
                         <input type="text" name="webaddress" value="@if(isset($singleRow)){{$singleRow->webaddress}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Present Address </label>
                         <input type="text" name="presentaddress" value="@if(isset($singleRow)){{$singleRow->presentaddress}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Permanent Address </label>
                         <input type="text" name="permanentaddress" value="@if(isset($singleRow)){{$singleRow->permanentaddress}}@else - @endif" class="form-control">
@@ -223,98 +232,98 @@
             </div>
 
             <p style="border-bottom:solid 1px; padding-bottom:10px;">Positions &nbsp;&nbsp;&nbsp;<button class="btn btn-primary addmoc"  style="padding: 0px 10px 0 10px;">+</button></p>
-           
+
 
             @if(isset($singleRow))
 
             @foreach(json_decode($singleRow->moc_position) as $key => $moc_position)
-            
+
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Ministry</label>
                         <input type="text" name="moc_position[]" value="{{json_decode($singleRow->moc_position)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">From Date</label>
                         <input type="date" name="moc_fromdate[]" value="{{json_decode($singleRow->moc_fromdate)[$key]}}" class="form-control">
                     </div>
-                </div> 
+                </div>
 
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">To Date</label>
                         <input type="date" name="moc_todate[]" value="{{json_decode($singleRow->moc_todate)[$key]}}" class="form-control">
                     </div>
-                </div>   
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Committee</label>
                         <input type="text" name="moc_committee[]" value="{{json_decode($singleRow->moc_committee)[$key]}}" value="-" class="form-control">
                     </div>
-                </div> 
-                <div class="col-md-3">                  
+                </div>
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">From Date</label>
                         <input type="date" name="moc_fromdate1[]" value="{{json_decode($singleRow->moc_fromdate1)[$key]}}" class="form-control">
                     </div>
-                </div> 
+                </div>
 
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">To Date</label>
                         <input type="date" name="moc_todate1[]" value="{{json_decode($singleRow->moc_todate1)[$key]}}" class="form-control">
                     </div>
-                </div>   
+                </div>
             </div>
             @endforeach
 
             @else
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Ministry</label>
                         <input type="text" name="moc_position[]" value="-" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">From Date</label>
                         <input type="date" name="moc_fromdate[]" class="form-control">
                     </div>
-                </div> 
+                </div>
 
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">To Date</label>
                         <input type="date" name="moc_todate[]" class="form-control">
                     </div>
-                </div>   
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Committee</label>
                         <input type="text" name="moc_committee[]" value="-" class="form-control">
                     </div>
-                </div> 
-                <div class="col-md-3">                  
+                </div>
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">From Date</label>
                         <input type="date" name="moc_fromdate1[]" class="form-control">
                     </div>
-                </div> 
+                </div>
 
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">To Date</label>
                         <input type="date" name="moc_todate1[]" class="form-control">
                     </div>
-                </div>   
+                </div>
             </div>
             @endif
             <span class="addmocbody"></span>
@@ -325,7 +334,7 @@
 
             @foreach(json_decode($singleRow->qualification) as $key => $qualification)
             <div class="row">
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Qualification{{$key}} </label>
                         <select name="qualification[]" class="form-control">
@@ -400,38 +409,38 @@
                                 <option value="M.S. (Orthopaedics)">M.S. (Orthopaedics)</option>
                                 <option value="M.Ed">M.Ed.</option>
                             </select>
-                        
+
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Year of Passing </label>
                         <input type="text"  name="yearofpassing[]" value="{{json_decode($singleRow->yearofpassing)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Institute/University</label>
                         <input type="text" name="iu[]" value="{{json_decode($singleRow->iu)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Details</label>
                         <input type="text" name="edudetails[]" value="{{json_decode($singleRow->edudetails)[$key]}}" class="form-control">
                     </div>
                 </div>
-                
+
                 <div class="col-md-1">
                     <a href="#" class="btn btn-danger remqualification" style="margin-top: 23px;">-</a>
                 </div>
             </div>
             @endforeach
-            
+
             @else
-           
+
             <div class="row">
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Qualification </label>
                         <select name="qualification[]" class="form-control">
@@ -506,29 +515,29 @@
                                 <option value="M.S. (Orthopaedics)">M.S. (Orthopaedics)</option>
                                 <option value="M.Ed">M.Ed.</option>
                             </select>
-                        
+
                     </div>
                 </div>
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Year of Passing </label>
                         <input type="text"  name="yearofpassing[]" value="-" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Institute/University</label>
                         <input type="text" name="iu[]" value="-" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Details</label>
                         <input type="text" name="edudetails[]" value="-" class="form-control">
                     </div>
                 </div>
-                
-               
+
+
             </div>
             @endif
             <span class="addqualificationbody">
@@ -538,7 +547,7 @@
 
             @foreach(json_decode($singleRow->previousposition) as $key => $previousposition)
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Previous official positions</label>
                         <select name="previousposition[]" class="form-control">
@@ -599,9 +608,9 @@
                             <option value="West Pakistan Assembly">West Pakistan Assembly</option>
                             <option value="Women Crises Center, Vehari">Women Crises Center, Vehari</option>
                         </select>
-                
+
                     </div>
-                    
+
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">Govt. Body</div>
@@ -612,7 +621,7 @@
 
             @else
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Previous official positions</label>
                         <select name="previousposition[]" class="form-control">
@@ -673,9 +682,9 @@
                             <option value="West Pakistan Assembly">West Pakistan Assembly</option>
                             <option value="Women Crises Center, Vehari">Women Crises Center, Vehari</option>
                         </select>
-                
+
                     </div>
-                    
+
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">Govt. Body</div>
@@ -685,31 +694,31 @@
             @endif
             <span class="addpreviousbody"></span>
             <p style="border-bottom:solid 1px; padding-bottom:10px;">Political Career &nbsp;&nbsp;&nbsp; <button class="btn btn-primary addpolitical"  style="padding: 0px 10px 0 10px;">+</button></p>
-           
+
 
             @if(isset($singleRow))
 
             @foreach(json_decode($singleRow->party) as $key => $party)
             <div class="row">
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Party</label>
                         <input type="text" name="party[]" value="{{json_decode($singleRow->party)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Detail</label>
                         <input type="text" name="pc_detail[]" value="{{json_decode($singleRow->pc_detail)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">From Date</label>
                         <input type="text" name="pc_fromdate[]" value="{{json_decode($singleRow->pc_fromdate)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">To Date</label>
                         <input type="text" name="pc_todate[]" value="{{json_decode($singleRow->pc_todate)[$key]}}" class="form-control">
@@ -720,25 +729,25 @@
 
             @else
             <div class="row">
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Party</label>
                         <input type="text" name="party[]" value="@if(isset($singleRow)){{$singleRow->party}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Detail</label>
                         <input type="text" name="pc_detail[]" value="@if(isset($singleRow)){{$singleRow->pc_detail}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">From Date</label>
                         <input type="text" name="pc_fromdate[]" value="@if(isset($singleRow)){{$singleRow->pc_fromdate}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">To Date</label>
                         <input type="text" name="pc_todate[]" value="@if(isset($singleRow)){{$singleRow->pc_todate}}@else - @endif" class="form-control">
@@ -752,49 +761,49 @@
             @if(isset($singleRow))
             @foreach(json_decode($singleRow->vtc_counttry) as $key => $vtc_counttry)
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Country</label>
                         <input type="text" name="vtc_counttry[]" value="{{json_decode($singleRow->vtc_counttry)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Purpose</label>
                         <input type="text" name="vtc_purpose[]" value="{{json_decode($singleRow->vtc_purpose)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Duration</label>
                         <input type="text" name="vtc_duration[]" value="{{json_decode($singleRow->vtc_duration)[$key]}}" class="form-control">
                     </div>
                 </div>
-                
+
             </div>
             @endforeach
 
             @else
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Country</label>
                         <input type="text" name="vtc_counttry[]" value="" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Purpose</label>
                         <input type="text" name="vtc_purpose[]" value="" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Duration</label>
                         <input type="text" name="vtc_duration[]" value="" class="form-control">
                     </div>
                 </div>
-                
+
             </div>
             @endif
             <span class="addvisitsbody"></span>
@@ -802,25 +811,25 @@
             @if(isset($singleRow))
             @foreach(json_decode($singleRow->pie_type) as $key => $pie_type)
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Event type</label>
                         <input type="text" name="pie_type[]" value="{{json_decode($singleRow->pie_type)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Country</label>
                         <input type="text" name="vtc_country[]" value="{{json_decode($singleRow->vtc_country)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Participated As</label>
                         <input type="text" name="vtc_participatedas[]" value="{{json_decode($singleRow->vtc_participatedas)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Event Date</label>
                         <input type="text" name="vtc_eventdate[]" value="{{json_decode($singleRow->vtc_eventdate)[$key]}}" class="form-control">
@@ -831,25 +840,25 @@
 
             @else
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Event type</label>
                         <input type="text" name="pie_type[]" value="@if(isset($singleRow)){{$singleRow->pie_type}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Country</label>
                         <input type="text" name="vtc_country[]" value="@if(isset($singleRow)){{$singleRow->vtc_country}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Participated As</label>
                         <input type="text" name="vtc_participatedas[]" value="@if(isset($singleRow)){{$singleRow->vtc_participatedas}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Event Date</label>
                         <input type="text" name="vtc_eventdate[]" value="@if(isset($singleRow)){{$singleRow->vtc_eventdate}}@else - @endif" class="form-control">
@@ -859,65 +868,65 @@
             @endif
             <span class="addeventbody"></span>
             <p style="border-bottom:solid 1px; padding-bottom:10px;">Relatives in Assemblies &nbsp;&nbsp;&nbsp; <button class="btn btn-primary addrelative" style="padding: 0px 10px 0 10px;">+</button></p>
-           
+
             @if(isset($singleRow))
             @foreach(json_decode($singleRow->ria_parliamentarybody) as $key => $ria_parliamentarybody)
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Parliamentary Body</label>
                         <input type="text" name="ria_parliamentarybody[]" value="{{json_decode($singleRow->ria_parliamentarybody)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Family Rrelation</label>
                         <input type="text" name="ria_familyrelation[]" value="{{json_decode($singleRow->ria_familyrelation)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Name</label>
                         <input type="text" name="ria_name[]" value="{{json_decode($singleRow->ria_name)[$key]}}" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Duration</label>
                         <input type="text" name="ria_duration[]" value="{{json_decode($singleRow->ria_duration)[$key]}}" class="form-control">
                     </div>
                 </div>
-                
+
             </div>
             @endforeach
 
             @else
             <div class="row">
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Parliamentary Body</label>
                         <input type="text" name="ria_parliamentarybody[]" value="@if(isset($singleRow)){{$singleRow->ria_parliamentarybody}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Family Rrelation</label>
                         <input type="text" name="ria_familyrelation[]" value="@if(isset($singleRow)){{$singleRow->ria_familyrelation}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">                  
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Name</label>
                         <input type="text" name="ria_name[]" value="@if(isset($singleRow)){{$singleRow->ria_name}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-2">                  
+                <div class="col-md-2">
                     <div class="form-group">
                         <label for="">Duration</label>
                         <input type="text" name="ria_duration[]" value="@if(isset($singleRow)){{$singleRow->ria_duration}}@else - @endif" class="form-control">
                     </div>
                 </div>
-                
+
             </div>
             @endif
             <span class="addrelativebody"></span>
@@ -927,11 +936,11 @@
         <br>
         @foreach($errors->all() as $error)
 <div class="alert alert-danger"> {{$error}} </div>
-@endforeach  
+@endforeach
   </div>
   <!-- /.box-body -->
   <div class="box-footer">
-    
+
   </div>
 
   <!-- /.box-footer-->
@@ -976,17 +985,17 @@
               <!-- <td>{{$about->assembly_tenures_id}}</td> -->
               <td>{{$about->name}}</td>
               <td>{{$about->birthday}}</td>
-              <td>{{$about->partyassociation}}</td>
+              <td>{{$about->party_name}}</td>
               <td>{{$about->constituency}}</td>
               <td>{{$about->phonenumber}}</td>
               <td>{{$about->permanentaddress}}</td>
               <td>
-                <a href="{{ route('membersdirectory.edit', ['membersdirectory' => $about->id]) }}" class="btn btn-primary">Edit</a> 
+                <a href="{{ route('membersdirectory.edit', ['membersdirectory' => $about->id]) }}" class="btn btn-primary">Edit</a>
                 <form style="width: 47%; float: right;" action="{{ route('membersdirectory.destroy', ['membersdirectory'=> $about->id ]) }}" onSubmit="return confirm('Are Your Sure to Delete?')" class="form-inline" method="post">
                         @csrf
-                        {{ method_field('DELETE') }}                      
+                        {{ method_field('DELETE') }}
                          <input type="submit" class="btn btn-danger" value="Delete" id="">
-                       
+
                     </form>
               </td>
             </tr>

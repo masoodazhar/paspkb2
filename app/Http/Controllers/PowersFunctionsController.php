@@ -63,7 +63,7 @@ class PowersFunctionsController extends Controller
             'name' => 'required',
             'description' => 'required'
         ]);
-           
+
 
         $table = new PowersFunctions;
         $table->name = $request->name;
@@ -91,10 +91,10 @@ class PowersFunctionsController extends Controller
     {
         $singleRowMain = DB::table('powers_functions_main')
         ->where('powers_functions_main.lang', app()->getLocale())
-        ->where('powerid',1)        
+        ->where('powerid',1)
         ->first();
-       
-        $singleRow = PowersFunctions::find($id); 
+
+        $singleRow = PowersFunctions::find($id);
         $allRows = PowersFunctions::all()->where('lang', app()->getLocale());
         return view('powersfunctions', compact('allRows','singleRow','singleRowMain'));
     }
@@ -112,29 +112,29 @@ class PowersFunctionsController extends Controller
             $request->validate([
                 'main_description' => 'required'
             ]);
-    
+
             DB::update('update powers_functions_main set main_description = ? where id = ?',[$request->main_description,$id]);
         }else{
             $request->validate([
                 'name' => 'required',
                 'description' => 'required'
             ]);
-            
+
             $table = PowersFunctions::find($id);
             $table->name = $request->name;
             $table->description = $request->description;
             $table->save();
-        } 
+        }
     return redirect()->route('powersfunctions.index')->with(['success'=>'Data has been Updated successfully']);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ignore,$id)
     {
         $singleRow = PowersFunctions::find($id);
         $singleRow->delete();

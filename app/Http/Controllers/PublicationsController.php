@@ -15,13 +15,13 @@ class PublicationsController extends Controller
          $this->middleware('permission:publications-create', ['only' => ['create','store']]);
          $this->middleware('permission:publications-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:publications-delete', ['only' => ['destroy']]);
-    } 
+    }
 
     public function get_publications_reports($page, $tenureid, $title=false, $locale='en')
     {
 
-        
-        if($title !='en' || $title !='ur' || $title !='sd'){ 
+
+        if($title !='en' || $title !='ur' || $title !='sd'){
 
             $allRows = DB::table('publications');
 
@@ -104,10 +104,10 @@ class PublicationsController extends Controller
         $table->page = $request->page;
         $table->type = $request->type;
         if($request->hasFile('image_pdf_link')){
-            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){            
-                $imageName = time().'.'.$request->image_pdf_link->extension();       
+            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){
+                $imageName = time().'.'.$request->image_pdf_link->extension();
                 $request->image_pdf_link->move(public_path('uploads'), $imageName);
-                $table->image_pdf_link =  $imageName;             
+                $table->image_pdf_link =  $imageName;
             }else{
                 $table->image_pdf_link = $request->image_pdf_link;
             }
@@ -136,9 +136,9 @@ class PublicationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($ignore, $id)
-    {        
-        $singleRow = Publications::find($id); 
-        // dd($singleRow); 
+    {
+        $singleRow = Publications::find($id);
+        // dd($singleRow);
         $allRows = DB::table('publications')
         ->join('assembly_tenures', 'assembly_tenures.id', '=', 'publications.assembly_tenures_id')
         ->select('publications.*', 'assembly_tenures.fromdate','assembly_tenures.todate')
@@ -177,10 +177,10 @@ class PublicationsController extends Controller
         $table->type = $request->type;
         $table->page = $request->page;
         if($request->hasFile('image_pdf_link')){
-            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){            
-                $imageName = time().'.'.$request->image_pdf_link->extension();       
+            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){
+                $imageName = time().'.'.$request->image_pdf_link->extension();
                 $request->image_pdf_link->move(public_path('uploads'), $imageName);
-                $table->image_pdf_link =  $imageName;             
+                $table->image_pdf_link =  $imageName;
             }else{
                 $table->image_pdf_link = $request->image_pdf_link;
             }
@@ -189,7 +189,7 @@ class PublicationsController extends Controller
         }
         $table->save();
         return redirect()->route('publications.index')->with(['success'=>'Data has been Updated successfully']);
-        
+
     }
 
     /**
@@ -198,7 +198,7 @@ class PublicationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ignore,$id)
     {
         $singleRow = Publications::find($id);
         $singleRow->delete();

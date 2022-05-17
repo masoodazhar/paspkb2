@@ -77,8 +77,8 @@ class WebCastLiveVideoAudioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {        
-        $singleRow = WebCastLiveVideoAudio::find($id); 
+    {
+        $singleRow = WebCastLiveVideoAudio::find($id);
         $allRows = WebCastLiveVideoAudio::all();
 
         return view('webcastlivevideoaudio', compact('allRows','singleRow'));
@@ -105,7 +105,7 @@ class WebCastLiveVideoAudioController extends Controller
         $table->date = $request->date;
         $table->save();
         return redirect()->route('webcastlivevideoaudio.index')->with(['success'=>'Data has been Updated successfully']);
-        
+
     }
 
     /**
@@ -114,7 +114,7 @@ class WebCastLiveVideoAudioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ignore,$id)
     {
         $singleRow = WebCastLiveVideoAudio::find($id);
         $singleRow->delete();

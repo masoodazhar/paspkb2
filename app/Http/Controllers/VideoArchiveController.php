@@ -13,8 +13,8 @@ class VideoArchiveController extends Controller
          $this->middleware('permission:faqs-create', ['only' => ['create','store']]);
          $this->middleware('permission:faqs-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:faqs-delete', ['only' => ['destroy']]);
-    } 
-    
+    }
+
     public function get_videoarchive($locale='en')
     {
         $allRows = DB::table('video_archives')->where('lang', $locale);
@@ -63,11 +63,11 @@ class VideoArchiveController extends Controller
         $table = new VideoArchive;
         $table->name = $request->name;
         if($request->hasFile('file')){
-                     
-            $imageName = time().'.'.$request->file->extension();       
+
+            $imageName = time().'.'.$request->file->extension();
             $request->file->move(public_path('uploads'), $imageName);
-            $table->file =  $imageName;             
-            
+            $table->file =  $imageName;
+
         }else{
             $table->file = $request->file;
         }
@@ -94,8 +94,8 @@ class VideoArchiveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {        
-        $singleRow = VideoArchive::find($id); 
+    {
+        $singleRow = VideoArchive::find($id);
         $allRows = VideoArchive::all();
 
         return view('videoarchive', compact('allRows','singleRow'));
@@ -119,18 +119,18 @@ class VideoArchiveController extends Controller
         $table = VideoArchive::find($id);
         $table->name = $request->name;
         if($request->hasFile('file')){
-                     
-            $imageName = time().'.'.$request->file->extension();       
+
+            $imageName = time().'.'.$request->file->extension();
             $request->file->move(public_path('uploads'), $imageName);
-            $table->file =  $imageName;             
-            
+            $table->file =  $imageName;
+
         }else{
             $table->file = $table->file;
         }
         $table->description = $request->description;
         $table->save();
         return redirect()->route('videoarchive.index')->with(['success'=>'Data has been Updated successfully']);
-        
+
     }
 
     /**
@@ -139,7 +139,7 @@ class VideoArchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ignore,$id)
     {
         $singleRow = VideoArchive::find($id);
         $singleRow->delete();

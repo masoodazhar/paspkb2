@@ -18,10 +18,10 @@ class ListofMembersController extends Controller
     public function get_listofmembers($id=false, $locale='en')
     {
         if(is_numeric($id)){
-            dd("");
+
             $allRows = ListofMembers::all()->where('id', $id)->where('lang', $locale)->first();
         }else{
-            
+
             $allRows = ListofMembers::where('lang', $locale)->get();
         }
         return response()->json($allRows);
@@ -60,18 +60,18 @@ class ListofMembersController extends Controller
             'type' => 'required',
             'image_pdf_link' => 'required'
         ]);
-           
+
 
         $table = new ListofMembers;
         $table->name = $request->name;
         $table->type = $request->type;
         $table->lang = app()->getLocale();
-        
+
         if($request->hasFile('image_pdf_link')){
-            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){            
-                $imageName = time().'.'.$request->image_pdf_link->extension();       
+            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){
+                $imageName = time().'.'.$request->image_pdf_link->extension();
                 $request->image_pdf_link->move(public_path('uploads'), $imageName);
-                $table->image_pdf_link =  $imageName;             
+                $table->image_pdf_link =  $imageName;
             }else{
                 $table->image_pdf_link = $request->image_pdf_link;
             }
@@ -100,8 +100,8 @@ class ListofMembersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($ignore, $id)
-    {       
-        $singleRow = ListofMembers::find($id); 
+    {
+        $singleRow = ListofMembers::find($id);
         $allRows = ListofMembers::all()->where('lang',app()->getLocale());
         return view('listofmembers', compact('allRows','singleRow'));
     }
@@ -125,10 +125,10 @@ class ListofMembersController extends Controller
         $table->name = $request->name;
         $table->type = $request->type;
         if($request->hasFile('image_pdf_link')){
-            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){            
-                $imageName = time().'.'.$request->image_pdf_link->extension();       
+            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){
+                $imageName = time().'.'.$request->image_pdf_link->extension();
                 $request->image_pdf_link->move(public_path('uploads'), $imageName);
-                $table->image_pdf_link =  $imageName;             
+                $table->image_pdf_link =  $imageName;
             }else{
                 $table->image_pdf_link = $request->image_pdf_link;
             }
@@ -137,7 +137,7 @@ class ListofMembersController extends Controller
         }
         $table->save();
         return redirect()->route('listofmembers.index')->with(['success'=>'Data has been Updated successfully']);
-        
+
     }
 
     /**

@@ -12,7 +12,7 @@ class RulesOfProceduresController extends Controller
          $this->middleware('permission:working-of-assembly-list|working-of-assembly-edit', ['only' => ['index','store']]);
          $this->middleware('permission:working-of-assembly-edit', ['only' => ['edit','update']]);
     }
-    
+
     public function get_rulesofprocedures($id=false, $locale='en')
     {
         if(is_numeric($id)){
@@ -24,7 +24,7 @@ class RulesOfProceduresController extends Controller
 
             $rulesOfProcedures = DB::table('rules_of_procedures')->where('lang', $locale)->get();
             return response()->json($rulesOfProcedures);
-            
+
         }
     }
     /**
@@ -67,7 +67,7 @@ class RulesOfProceduresController extends Controller
         $table->lang = app()->getLocale();
         $table->save();
         return redirect()->route('rulesofprocedures.index')->with(['success'=>'Data has been Updated successfully']);
-   
+
     }
 
     /**
@@ -78,7 +78,7 @@ class RulesOfProceduresController extends Controller
      */
     public function show($id)
     {
-    
+
     }
 
     /**

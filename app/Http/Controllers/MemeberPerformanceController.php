@@ -24,7 +24,7 @@ class MemeberPerformanceController extends Controller
         ->where('elections.lang', $locale)
         ->get()->count();
 
-        
+
 
         $current = DB::table('elections')
         ->where('elections.members_directories_current_id', $member)
@@ -43,27 +43,37 @@ class MemeberPerformanceController extends Controller
             ->first();
         }
         elseif($current){
-            
+
             $allRows = DB::table('members_directories')
             ->join('assembly_tenures', 'assembly_tenures.id', '=', 'members_directories.assembly_tenures_id')
             ->join('assemblies', 'assemblies.id', '=', 'assembly_tenures.assembly_id')
             ->join('elections', 'elections.members_directories_current_id', '=', 'members_directories.id')
             ->select('members_directories.*','assembly_tenures.fromdate','assembly_tenures.todate','assemblies.name as assemblyname')
             ->where('members_directories.id', $member)
-            ->where('members_directories.lang', $locale)
-            ->first();
+            ->where('members_directories.lang', $locale);
+
         }
         else{
             $allRows = DB::table('members_directories')
             ->join('assembly_tenures', 'assembly_tenures.id', '=', 'members_directories.assembly_tenures_id')
             ->join('assemblies', 'assemblies.id', '=', 'assembly_tenures.assembly_id')
-            ->select('members_directories.*','assembly_tenures.fromdate','assembly_tenures.todate','assemblies.name as assemblyname')
+            ->leftJoin('parties', 'parties.id', '=', 'members_directories.partyassociation')
+            ->select('members_directories.*','assembly_tenures.fromdate','assembly_tenures.todate','assemblies.name as assemblyname', 'parties.party_name as partyassociation', 'parties.party_type')
             ->where('members_directories.id', $member)
-            ->where('members_directories.lang', $locale)
-            ->first();
+            ->where('members_directories.lang', $locale);
+
         }
-        
-        
+
+
+        // if($allRows->partyassociation != '-') {
+
+
+        //     $allRows = $allRows->join('parties', 'parties.id', '=', 'members_directories.partyassociation')
+        //     ->select('party_name, party_type');
+        // }
+
+        $allRows = $allRows->first();
+
 
         // dd($allRows);
         // $data = array();
@@ -108,7 +118,7 @@ class MemeberPerformanceController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -137,7 +147,7 @@ class MemeberPerformanceController extends Controller
         $assemblytenureData = new MemeberPerformance;
         $index=0;
         foreach($request->assemblyquestiontext as $a){
-            
+
             $answers[] = [
                 'members_directories_id' => $request->members_directories_id,
                 'assemblyquestiontext' => $request->assemblyquestiontext[$index],
@@ -148,7 +158,7 @@ class MemeberPerformanceController extends Controller
 
                 'adjournmentmotiontext' => $request->adjournmentmotiontext[$index],
                 'adjournmentmotionvalue' => $request->adjournmentmotionvalue[$index],
-                
+
                 'privatebillstext' => $request->privatebillstext[$index],
                 'privatebillsvalue' => $request->privatebillsvalue[$index],
 
@@ -162,7 +172,7 @@ class MemeberPerformanceController extends Controller
 
             $index++;
         }
-        
+
         MemeberPerformance::insert($answers);
         // $assemblytenureData->members_directories_id = $request->members_directories_id;
         // $assemblytenureData->assemblyquestiontext = $request->assemblyquestiontext;
@@ -178,7 +188,7 @@ class MemeberPerformanceController extends Controller
         // $assemblytenureData->motionstext = $request->motionstext;
         // $assemblytenureData->motionsvalue = $request->motionsvalue;
         // $assemblytenureData->save();
-        
+
         return redirect()->route('membersperformancereport.index')->with(['success'=>'Data has been Saved successfully']);
     }
 
@@ -188,7 +198,7 @@ class MemeberPerformanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
     /**
      * Show the form for editing the specified resource.
      *

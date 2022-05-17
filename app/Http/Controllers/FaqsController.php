@@ -13,7 +13,7 @@ class FaqsController extends Controller
          $this->middleware('permission:video-archive-create', ['only' => ['create','store']]);
          $this->middleware('permission:video-archive-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:video-archive-delete', ['only' => ['destroy']]);
-    } 
+    }
 
     public function get_faqs($locale='en')
     {
@@ -78,8 +78,8 @@ class FaqsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {        
-        $singleRow = Faqs::find($id); 
+    {
+        $singleRow = Faqs::find($id);
         $allRows = Faqs::all();
 
         return view('faqs', compact('allRows','singleRow'));
@@ -104,7 +104,7 @@ class FaqsController extends Controller
         $table->description = $request->description;
         $table->save();
         return redirect()->route('faqs.index')->with(['success'=>'Data has been Updated successfully']);
-        
+
     }
 
     /**
@@ -113,7 +113,7 @@ class FaqsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ignore,$id)
     {
         $singleRow = Faqs::find($id);
         $singleRow->delete();

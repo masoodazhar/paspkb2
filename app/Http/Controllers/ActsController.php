@@ -18,7 +18,7 @@ class ActsController extends Controller
          $this->middleware('permission:acts-create', ['only' => ['create','store']]);
          $this->middleware('permission:acts-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:acts-delete', ['only' => ['destroy']]);
-    }  
+    }
 
     public function get_acts($tenurid, $locale='en'){
         $allRows = DB::table('acts')
@@ -76,7 +76,7 @@ class ActsController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -111,12 +111,12 @@ class ActsController extends Controller
         $table->dateofgov = $request->dateofgov;
         $table->type = $request->type;
         $table->lang = app()->getLocale();
-        
+
          if($request->hasFile('image_pdf_link')){
-            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){            
-                $imageName = time().'.'.$request->image_pdf_link->extension();       
+            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){
+                $imageName = time().'.'.$request->image_pdf_link->extension();
                 $request->image_pdf_link->move(public_path('uploads'), $imageName);
-                $table->image_pdf_link =  $imageName;             
+                $table->image_pdf_link =  $imageName;
             }else{
                 $table->image_pdf_link = $request->image_pdf_link;
             }
@@ -133,7 +133,7 @@ class ActsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -152,7 +152,7 @@ class ActsController extends Controller
         ->select('acts.*', 'parliamentary_years.name as parliamentary_years_name','assembly_tenures.fromdate','assembly_tenures.todate','sessions.fromdate as sessionsfromdate','sessions.todate as sessionstodate','order_of_the_day_summary_of_proceedings.sittingsno')
         ->where('acts.lang',app()->getLocale())
         ->get();
-        
+
         $assemblyTenure = AssemblyTenure::orderBy('id', 'desc')->where('bills.lang',app()->getLocale())->get();
         $parliamentaryYears = ParliamentaryYears::all()->where('bills.lang',app()->getLocale());
         $sessions = Sessions::all()->where('bills.lang',app()->getLocale());
@@ -194,10 +194,10 @@ class ActsController extends Controller
         $table->dateofgov = $request->dateofgov;
         $table->type = $request->type;
          if($request->hasFile('image_pdf_link')){
-            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){            
-                $imageName = time().'.'.$request->image_pdf_link->extension();       
+            if($request->type=='pdf' || $request->type=='jpg' || $request->type=='png'){
+                $imageName = time().'.'.$request->image_pdf_link->extension();
                 $request->image_pdf_link->move(public_path('uploads'), $imageName);
-                $table->image_pdf_link =  $imageName;             
+                $table->image_pdf_link =  $imageName;
             }else{
                 $table->image_pdf_link = $request->image_pdf_link;
             }
@@ -214,7 +214,7 @@ class ActsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ignore,$id)
     {
         $table = Acts::find($id);
         $table->delete();

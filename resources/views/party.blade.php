@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for=""> Party (Name) </label>
+                        <label for=""> Party (Type) </label>
                         <select name="party_type" id=""  class="form-control">
                                 <option value="Government" @if(isset($assemblyData)) @if($assemblyData->party_type == 'Government') selected @endif  @endif>Government</option>
                                 <option value="Opposition Alliance" @if(isset($assemblyData)) @if($assemblyData->party_type == 'Opposition Alliance') selected @endif  @endif>Opposition Alliance</option>

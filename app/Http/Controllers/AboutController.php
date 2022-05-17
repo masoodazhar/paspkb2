@@ -15,10 +15,10 @@ class AboutController extends Controller
          $this->middleware('permission:about-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:about-delete', ['only' => ['destroy']]);
     }
-    function get_about($locale=''){        
+    function get_about($locale=''){
         $allRows = DB::table('abouts')->where('lang', $locale)->get();
         // dd($allRows);
-        return response()->json($allRows);   
+        return response()->json($allRows);
     }
     /**
      * Display a listing of the resource.
@@ -53,7 +53,7 @@ class AboutController extends Controller
              'name' => 'required',
             'description' => 'required'
         ]);
-           
+
 
         $table = new About;
         $table->name = $request->name;
@@ -82,9 +82,9 @@ class AboutController extends Controller
      */
     public function edit($ignore, $id)
     {
-       
+
         // dd($id);
-        $singleRow = About::find($id); 
+        $singleRow = About::find($id);
         $allRows = About::all()->where('lang', app()->getLocale());
         return view('about', compact('allRows','singleRow'));
 
@@ -109,7 +109,7 @@ class AboutController extends Controller
         $table->description = $request->description;
         $table->save();
         return redirect()->route('about.index',  app()->getLocale())->with(['success'=>'Data has been Updated successfully']);
-        
+
     }
 
     /**
